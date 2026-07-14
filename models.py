@@ -21,9 +21,10 @@ class DigitCNNv1(nn.Module):
         )
         self.head = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(64 * 3 * 8, 128),
+            nn.Linear(64 * 3 * 8, 64),
             nn.ReLU(),
-            nn.Linear(128, 50)
+            nn.Dropout(0.3),
+            nn.Linear(64, 50)
         )
 
     def forward(self, x):
